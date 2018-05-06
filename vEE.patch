@@ -1,0 +1,13 @@
+diff --git a/xos/veestat/Dockerfile b/xos/veestat/Dockerfile
+index 6c80e32..62363d2 100644
+--- a/xos/veestat/Dockerfile
++++ b/xos/veestat/Dockerfile
+@@ -9,7 +9,7 @@ COPY ${CODE_SOURCE}/package.json ${CODE_DEST}/package.json
+ COPY ${CODE_SOURCE}/typings.json ${CODE_DEST}/typings.json
+ 
+ WORKDIR ${CODE_DEST}
+-RUN npm install
++RUN npm dedupe && npm install
+ RUN npm run typings
+ 
+ COPY ${CODE_SOURCE}/conf ${CODE_DEST}/conf
