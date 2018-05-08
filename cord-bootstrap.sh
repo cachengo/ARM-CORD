@@ -21,6 +21,7 @@ set -e -u -o pipefail
 
 # start time, used to name logfiles
 START_T=$(date -u "+%Y%m%d%H%M%SZ")
+START_DIR=`pwd`
 
 # Location of 'cord' directory checked out on the local system
 CORDDIR="${CORDDIR:-${HOME}/cord}"
@@ -105,12 +106,12 @@ function bootstrap_repo() {
     fi
   fi
 
-  git apply --directory='~/cord/build' build.patch
-  git apply --directory='~/cord/orchestration/xos' xos.patch
-  git apply --directory='~/cord/orchestration/xos_services/vEE' vEE.patch
-  git apply --directory='~/cord/orchestration/xos_services/vtr' vtr.patch
-  git apply --directory='~/cord/orchestration/xos-gui' xos-gui.patch
-  git apply --directory='~/cord/orchestration/xos-sample-gui-extension' xos-sample-gui-extension.patch
+  git apply --directory='~/cord/build' $START_DIR/build.patch
+  git apply --directory='~/cord/orchestration/xos' $START_DIR/xos.patch
+  git apply --directory='~/cord/orchestration/xos_services/vEE' $START_DIR/vEE.patch
+  git apply --directory='~/cord/orchestration/xos_services/vtr' $START_DIR/vtr.patch
+  git apply --directory='~/cord/orchestration/xos-gui' $START_DIR/xos-gui.patch
+  git apply --directory='~/cord/orchestration/xos-sample-gui-extension' $START_DIR/xos-sample-gui-extension.patch
   
 }
 
