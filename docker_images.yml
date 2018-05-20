@@ -1,0 +1,232 @@
+---
+# Copyright 2017-present Open Networking Foundation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# docker_images.yml
+# master list of docker images used by imagebuilder.py
+
+# tag to set on every container built/downloaded
+
+docker_build_tag: "candidate"
+
+
+buildable_images:
+
+  - name: opencord/mavenrepo
+    repo: opencord/cord-onos-publisher
+    dockerfile: "Dockerfile.make"
+
+  - name: xosproject/xos-base
+    repo: cachengo/xos
+    path: "containers/xos"
+    dockerfile: "Dockerfile.base"
+
+  - name: xosproject/xos-core
+    repo: cachengo/xos
+    path: "containers/xos"
+    dockerfile: "Dockerfile.xos-core"
+    context: "../.."
+
+  - name: xosproject/xos-libraries
+    repo: cachengo/xos
+    path: "containers/xos"
+    dockerfile: "Dockerfile.libraries"
+    context: "../.."
+
+  - name: xosproject/chameleon
+    repo: cachengo/xos
+    path: "containers/chameleon"
+    dockerfile: "Dockerfile.chameleon"
+    components:
+      - repo: opencord/chameleon
+        dest: tmp.chameleon
+
+  - name: xosproject/xos-client
+    repo: cachengo/xos
+    path: "containers/xos"
+    dockerfile: "Dockerfile.client"
+    context: "../.."
+    components:
+      - repo: opencord/chameleon
+        dest: containers/xos/tmp.chameleon
+
+  - name: xosproject/xos-synchronizer-base
+    repo: cachengo/xos
+    path: "containers/xos"
+    dockerfile: "Dockerfile.synchronizer-base"
+    context: "../.."
+
+  - name: xosproject/xos-tosca
+    repo: opencord/xos-tosca
+
+  - name: xosproject/xos-ws
+    repo: opencord/xos-rest-gw
+
+  - name: xosproject/xos-gui-builder
+    repo: cachengo/xos-gui
+    dockerfile: "Dockerfile.xos-gui-builder"
+
+  - name: xosproject/xos-gui
+    repo: cachengo/xos-gui
+
+  - name: xosproject/gui-extension-rcord
+    repo: opencord/rcord
+    path: "xos/gui"
+
+  - name: xosproject/gui-extension-veestat
+    repo: cachengo/cord-vEE
+    path: "xos/veestat"
+
+  - name: xosproject/gui-extension-vtr
+    repo: cachengo/cord-vtr
+    path: "xos/gui"
+
+  - name: xosproject/gui-extension-vnaas
+    repo: cachengo/cord-vnaas
+    path: "xos/gui"
+
+  - name: xosproject/gui-extension-sample
+    repo: cachengo/xos-sample-gui-extension
+
+  - name: xosproject/addressmanager-synchronizer
+    repo: opencord/addressmanager
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/openstack-synchronizer
+    repo: opencord/openstack
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/onos-synchronizer
+    repo: opencord/onos-service
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vee-synchronizer
+    repo: cachengo/cord-vEE
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/veg-synchronizer
+    repo: opencord/vEG
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vnaas-synchronizer
+    repo: opencord/vnaas
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/volt-synchronizer
+    repo: opencord/olt-service
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vrouter-synchronizer
+    repo: opencord/vrouter
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vtn-synchronizer
+    repo: opencord/vtn-service
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vtr-synchronizer
+    repo: cachengo/cord-vtr
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vsg-hw-synchronizer
+    repo: cachengo/cord-vsg-hw
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/kubernetes-synchronizer
+    repo: cachengo/cord-kubernetes-service
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vsg-synchronizer
+    repo: opencord/vsg
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/fabric-synchronizer
+    repo: opencord/fabric
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/exampleservice-synchronizer
+    repo: opencord/exampleservice
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vmme-synchronizer
+    repo: opencord/vMME
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vhss-synchronizer
+    repo: opencord/vHSS
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/hssdb-synchronizer
+    repo: cachengo/cord-hss_db
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/internetemulator-synchronizer
+    repo: cachengo/cord-internetemulator
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/sdncontroller-synchronizer
+    repo: cachengo/cord-sdn-controller
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vspgwc-synchronizer
+    repo: opencord/vspgwc
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vspgwu-synchronizer
+    repo: opencord/vspgwu
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vepc-synchronizer
+    repo: opencord/epc-service
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/mcord-synchronizer
+    repo: opencord/mcord
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/venb-synchronizer
+    repo: opencord/venb
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/templateservice-synchronizer
+    repo: cachengo/cord-templateservice
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/rcord-synchronizer
+    repo: opencord/rcord
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/progran-synchronizer
+    repo: opencord/progran
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/xos-api-tester
+    repo: opencord/cord-tester
+    path: "src/test/cord-api"
+    dockerfile: "Dockerfile.k8s-api-tester"
