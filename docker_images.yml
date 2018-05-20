@@ -71,7 +71,7 @@ buildable_images:
     repo: opencord/xos-tosca
 
   - name: xosproject/xos-ws
-    repo: opencord/xos-rest-gw
+    repo: cachengo/xos-rest-gw
 
   - name: xosproject/xos-gui-builder
     repo: cachengo/xos-gui
